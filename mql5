@@ -1,0 +1,99 @@
+mql5
+//+------------------------------------------------------------------+
+//|                                 Switch Tray                      |
+//|           Expert Advisor for Customizable Trading Tray           |
+//|                 Developer's Site: forexroboteasy.com             |
+//|                  Development by: Forex Robot Easy Team           |
+//+------------------------------------------------------------------+
+
+// Define the trading pairs for the shortcut buttons
+string[] tradingPairs = {'EURUSD', 'GBPUSD', 'XAUUSD', 'USDJPY', 'USDCHF', 'USDCNH'};
+int totalPairs = ArraySize(tradingPairs);
+
+// Define the number of open positions for each trading pair
+int[] openPositions = new int[totalPairs];
+
+//+------------------------------------------------------------------+
+//|                      Customization Functions                      |
+//+------------------------------------------------------------------+
+
+// Function to set the preferred trading pairs as shortcut buttons
+void CustomizeShortcutButtons()
+{
+    Print('Customizing shortcut buttons...');
+    // Add the code to customize the shortcut buttons here
+}
+
+//+------------------------------------------------------------------+
+//|                   Open Positions Display Function                 |
+//+------------------------------------------------------------------+
+
+// Function to display the number of open positions for each trading pair
+void DisplayOpenPositions()
+{
+    Print('Open Positions:');
+    for (int i = 0; i < totalPairs; i++)
+    {
+        Print(tradingPairs[i] + ' : ' + openPositions[i]);
+    }
+}
+
+//+------------------------------------------------------------------+
+//|                   Quick Switching Function                        |
+//+------------------------------------------------------------------+
+
+// Function to switch between trading pairs with a single click
+void QuickSwitching(int index)
+{
+    Print('Switching to ' + tradingPairs[index] + '...');
+    // Add the code to switch to the selected trading pair here
+}
+
+//+------------------------------------------------------------------+
+//|                 Trading Functions for Switch Tray                 |
+//+------------------------------------------------------------------+
+
+// Function to place orders
+void PlaceOrder(double volume, ENUM_ORDER_TYPE orderType, string symbol)
+{
+    Print('Placing order for ' + symbol + '...');
+    // Add the code to place the order here
+}
+
+// Function to close positions
+void ClosePosition(string symbol)
+{
+    Print('Closing position for ' + symbol + '...');
+    // Add the code to close the position here
+}
+
+// Function to monitor account balance
+void MonitorAccountBalance()
+{
+    Print('Monitoring account balance...');
+    // Add the code to monitor the account balance here
+}
+
+//+------------------------------------------------------------------+
+//|                        Main Program Start                         |
+//+------------------------------------------------------------------+
+
+void OnStart()
+{
+    // Customization
+    CustomizeShortcutButtons();
+    
+    // Display open positions
+    DisplayOpenPositions();
+    
+    // Quick switching
+    int randomIndex = MathRand() % totalPairs;
+    QuickSwitching(randomIndex);
+    
+    // Trading functions
+    PlaceOrder(0.01, ORDER_TYPE_BUY, tradingPairs[randomIndex]);
+    ClosePosition(tradingPairs[randomIndex]);
+    MonitorAccountBalance();
+}
+
+//+------------------------------------------------------------------+
